@@ -1,0 +1,5 @@
+# webstorm files #
+.idea/*.*
+
+# npm packages #
+node_modules/*.*

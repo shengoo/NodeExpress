@@ -8,7 +8,6 @@
   "dependencies": {
     "express": "*",
     "jade": "*",
-    "sqlite3": "*",
-    "twitter-bootstrap":"*"
+    "sqlite3": "*"
   }
 }

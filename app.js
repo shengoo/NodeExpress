@@ -4,6 +4,7 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongo = require('./mongo');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -56,4 +57,11 @@ app.use(function(err, req, res, next) {
 });
 
 
-module.exports = app;
+var debug = require('debug')('test');
+
+app.set('port', process.env.PORT || 3000);
+
+var server = app.listen(app.get('port'), function() {
+  console.log("server start http://localhost:3000")
+  debug('Express server listening on port ' + server.address().port);
+});

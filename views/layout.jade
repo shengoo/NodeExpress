@@ -2,7 +2,9 @@ doctype html
 html
   include ./includes/head
   body
-    block content
+    .container
+      include ./includes/nav
+      block content
     block footer
       include ./includes/footer
 

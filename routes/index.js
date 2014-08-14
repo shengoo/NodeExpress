@@ -12,12 +12,7 @@ function requireUser(req, res, next){
 }
 /* GET home page. */
 router.get('/', function(req, res) {
-  // res.render('index', { title: 'Express' });
-  var coll = mongo.collection('users');
-  coll.find({}).toArray(function(err, users){
-    console.dir(users)
-    res.render('index', {users:users,pageTitle:'Index'});  
-  })
+  res.render('index');
 });
 
 

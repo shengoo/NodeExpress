@@ -1,0 +1,14 @@
+nav.navbar.navbar-default(role="navigation")
+  .navbar-header
+    a.navbar-brand(href="#") Brand
+
+  .navbar-collapse.collapse
+    if user
+      p Logged in as: 
+        b #{user.username}
+        |.
+      a(href='/logout') Logout
+    else
+      a(href='/login') Login
+      |  | 
+      a(href='/signup') Sign up

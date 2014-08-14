@@ -1,7 +1,17 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+  include ./includes/head
   body
     block content
+    block footer
+      include ./includes/footer
+
+// single line comment will be  <!-- single line comment will be \-\-\>
+//- will not output within markup
+
+//
+  #content
+    h1 Example
+
+//if IE
+    a(href='http://www.mozilla.com/en-US/firefox/') Get Firefox

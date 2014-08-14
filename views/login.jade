@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  if badCredentials
+    <p>The login information you entered is not correct.</p>
+  else
+    form(method="post",action='/login')
+      fieldset
+        legend General
+        p
+          label(for="username") Username:
+            input(type="text", name="username")
+        p
+          label(for="password") Password:
+            input(type="password", name="password")
+        input(type="submit") 

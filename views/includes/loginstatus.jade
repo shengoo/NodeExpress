@@ -1,0 +1,12 @@
+if user
+  ul.nav.navbar-nav.navbar-right
+    li
+      a(href='/user/profile') Hello #{user.username}
+    li
+      a(href='/logout') Logout
+else
+  ul.nav.navbar-nav.navbar-right
+    li
+      a(href='/login') Login
+    li
+      a(href='/signup') Sign up

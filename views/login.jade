@@ -4,13 +4,24 @@ block content
   if badCredentials
     <p>The login information you entered is not correct.</p>
   else
-    form(method="post",action='/login')
-      fieldset
-        legend General
-        p
-          label(for="username") Username:
-            input(type="text", name="username", value="a")
-        p
-          label(for="password") Password:
-            input(type="password", name="password", value="a")
-        input(type="submit") 
+    h2 Log in
+    hr
+    .row
+      form(method="post",action='/login')
+        fieldset
+          .form-group
+            label.col-md-2.control-label(for="username") Username:
+            .col-md-10
+              input.form-control(type="text", name="username", value="a")
+          .form-group
+            label.col-md-2.control-label(for="password") Password:
+            .col-md-10
+              input.form-control(type="password", name="password", value="a")
+          .form-group
+            .col-md-offset-2.col-md-10
+              .checkbox
+                input(id="RememberMe" name="RememberMe" type="checkbox",style="margin-left: 0;")
+                label(for="RememberMe") Remember Me?
+          .form-group
+            .col-md-offset-2.col-md-10
+              input.btn.btn-default(type="submit" value="Log in") 

@@ -2,10 +2,9 @@ doctype html
 html
   include ./includes/head
   body
-    .container
-      include ./includes/nav
+    include ./includes/nav
+    .container.body-content
       block content
-    block footer
       include ./includes/footer
 
 // single line comment will be  <!-- single line comment will be \-\-\>

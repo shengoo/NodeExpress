@@ -4,17 +4,26 @@ block content
   if error
     <p>There was an error signing up: #{error}.</p>
   else
-    form(method="post",action='/signup')
-      fieldset
-        legend General
-        p
-          label(for="username") Username:
-            input(type="text", name="username")
-        p
-          label(for="password") Password:
-            input(type="password", name="password")
-        p
-          label(for="password") Confirm password:
-            input(type="password", name="password_confirmation")
-        input(type="submit") 
+    h2 Register
+    hr
+    .row
+      .col-md-8
+        form(method="post",action='/signup')
+          fieldset
+            legend Register
+            .form-group
+              label.col-md-2.control-label(for="username") Username:
+              .col-md-10
+                input.form-control(type="text", name="username")
+            .form-group
+              label.col-md-2.control-label(for="password") Password:
+              .col-md-10
+                input.form-control(type="password", name="password")
+            .form-group
+              label.col-md-2.control-label(for="password") Confirm password:
+              .col-md-10
+                input.form-control(type="password", name="password_confirmation")
+            .form-group
+              .col-md-offset-2.col-md-10
+                input.btn.btn-default(type="submit") 
  

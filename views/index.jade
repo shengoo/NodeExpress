@@ -1,12 +1,8 @@
 extends layout
 
 block content
-  if user
-    p Logged in as: 
-      b #{user.username}
-      |.
-    a(href='/logout') Logout
-  else
-    a(href='/login') Login
-    |  | 
-    a(href='/signup') Sign up
+  .jumbotron
+    h1 Node.js
+    p.lead Node.js is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.
+    p
+      a.btn.btn-primary.btn-large(href="http://nodejs.org" ) Learn more &raquo;

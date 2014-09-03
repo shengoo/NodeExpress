@@ -10,7 +10,7 @@ var mongo = require('./mongo');
 var mongoUrl = 'mongodb://localhost:27017/test';
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var userRoute = require('./routes/user');
 var memberRoute = require('./routes/member');
 
 var app = express();
@@ -71,8 +71,8 @@ app.use( expressSession({
 app.use(checkIfLoggedIn);
 
 app.use('/', routes);
-app.use('/users', users);
 app.use('/member', memberRoute);
+app.use('/user',userRoute)
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {

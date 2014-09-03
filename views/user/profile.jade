@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+  .row
+    h2 change password
+    hr
+    .col-md-12
+      form(method="post",action='/user/profile')
+        .form-group
+          label.col-md-2.control-label(for="OldPassword") OldPassword
+          .col-md-10
+            input.form-control(type="password",name="OldPassword",id="OldPassword")
+      .form-group
+          label.col-md-2.control-label(for="NewPassword") NewPassword
+          .col-md-10
+            input.form-control(type="password",name="NewPassword",id="NewPassword")
+      .form-group
+          label.col-md-2.control-label(for="ConfirmPassword") ConfirmPassword
+          .col-md-10
+            input.form-control(type="password",name="ConfirmPassword",id="ConfirmPassword")
+      .form-group
+        .col-md-offset-2.col-md-10
+            input.btn.btn-default(type="submit" value="Change password")

@@ -39,19 +39,18 @@ router.get('/signup', function(req,res){
 });
 
 router.post('/signup', function(req, res){
-  // The 3 variables below all come from the form
-  // in views/signup.hbs
-  var username = req.body.username;
   var password = req.body.password;
+  var name = req.body.name;
+  var idno = req.body.idno;
   var password_confirmation = req.body.password_confirmation;
   
-  createUser(username, password, password_confirmation, function(err, user){
+  createUser(name, idno, password, password_confirmation,  function(err, user){
     if (err) {
       res.render('signup', {error: err});
     } else {
       
       // This way subsequent requests will know the user is logged in.
-      req.session.username = user.username;
+      req.session.name = user.name;
       
       res.redirect('/');  
     }
@@ -67,26 +66,27 @@ function createHash(string){
   var crypto = require('crypto');
   return crypto.createHash('sha256').update(string).digest('hex');
 }
-function createUser(username, password, password_confirmation, callback){
+function createUser(name, idno, password, password_confirmation, callback){
   var coll = mongo.collection('users');
   
   if (password !== password_confirmation) {
     var err = 'The passwords do not match';
     callback(err);
   } else {
-    var query      = {username:username};
+    var query      = {name:name};
     var salt       = createSalt();
     var hashedPassword = createHash(password + salt);
     var userObject = {
-      username: username,
+      name: name,
+      idno: idno,
       salt: salt,
       hashedPassword: hashedPassword
     };
     
-    // make sure this username does not exist already
+    // make sure this name does not exist already
     coll.findOne(query, function(err, user){
       if (user) {
-        err = 'The username you entered already exists';
+        err = 'The name you entered already exists';
         callback(err);
       } else {
         // create the new user
@@ -100,10 +100,10 @@ function createUser(username, password, password_confirmation, callback){
 
 // This finds a user matching the username and password that
 // were given.
-function authenticateUser(username, password, callback){
+function authenticateUser(name, password, callback){
   var coll = mongo.collection('users');
   
-  coll.findOne({username: username}, function(err, user){
+  coll.findOne({name: name}, function(err, user){
     if (err) {
       return callback(err, null);
     }
@@ -123,13 +123,14 @@ function authenticateUser(username, password, callback){
 router.post('/login', function(req, res){
   // These two variables come from the form on
   // the views/login.hbs page
-  var username = req.body.username;
+  console.log(req.body)
+  var name = req.body.name;
   var password = req.body.password;
   
-  authenticateUser(username, password, function(err, user){
+  authenticateUser(name, password, function(err, user){
     if (user) {
       // This way subsequent requests will know the user is logged in.
-      req.session.username = user.username;
+      req.session.name = user.name;
 
       res.redirect('/');
     } else {

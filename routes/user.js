@@ -12,6 +12,10 @@ router.get('/hi',function(req,res){
 
 router.get('/profile',function (req,res) {
   res.render('user/profile')
+});
+
+router.post('/profile',function (req,res) {
+  
 })
 
 module.exports = router;
